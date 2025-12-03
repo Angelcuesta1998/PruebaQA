@@ -22,7 +22,6 @@ class planZapping():
     plan_premium = (By.XPATH, "//img[@src='https://www.xtrim.com.ec/wp-content/uploads/2025/03/logo_zapppremium2.svg']")
 
 
-
     def click_button_cerrar(self):
         self.driver.find_element(*self.buttonCerrar).click()
     
@@ -33,14 +32,12 @@ class planZapping():
     def click_plan(self, tipo):
         tipo = tipo.lower()  # normalizar
 
-        # Localizadores de las imágenes de los planes
+
         IMAGEN_PLAN = {
             "basico": (By.XPATH, "//img[@src='https://www.xtrim.com.ec/wp-content/uploads/2025/06/logo_zappbasicov2.png']"),
             "plus": (By.XPATH, "//img[@src='https://www.xtrim.com.ec/wp-content/uploads/2025/06/logo_zappplus.png']"),
             "premium": (By.XPATH, "//img[@src='https://www.xtrim.com.ec/wp-content/uploads/2025/03/logo_zapppremium2.svg']")
         }
-
-        # Esperar que la página cargue
         self.wait.until(lambda d: d.execute_script("return document.readyState") == "complete")
         time.sleep(3)
         
@@ -49,14 +46,11 @@ class planZapping():
         
         self.driver.execute_script("window.scrollBy(0, 600);")
 
-        # Buscar el cuadro de ese plan
         time.sleep(3)
         cuadro = self.wait.until(EC.visibility_of_element_located(IMAGEN_PLAN[tipo]))
 
-        # Buscar el botón dentro del mismo cuadro (relativo al cuadro)
         boton = cuadro.find_element(By.XPATH, "(./a[contains(text(),'Contratalo Aquí')])[2]")
 
-        # Scroll hasta el botón y click seguro
         self.driver.execute_script("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", boton)
         time.sleep(0.5)
         actions = ActionChains(self.driver)
