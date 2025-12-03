@@ -25,6 +25,7 @@
 #Especificaciones de los test:
 -test_login: Prueba de Ingreso al sistema de Xtrim.
 -test_FormContacto: Formulario de contacto en la sección “Te llamamos”: Contáctanos : Xtrim
+-test_planZapping : Validar acceso a la landing en la sección “Zapping” > “Plan Plus o Premium”
 
 
 
